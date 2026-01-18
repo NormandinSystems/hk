@@ -12,7 +12,6 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Rye for that "Circus/Western/Vintage" header feel often found in burlesque -->
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Rye&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     
     <!-- Lucide Icons -->
@@ -26,7 +25,7 @@
                         'hks-black': '#0a0505',
                         'hks-red': '#660a0a',
                         'hks-gold': '#bf9b30',
-                        'hks-paper': '#f0e6d2', /* Off-white for contrast elements */
+                        'hks-paper': '#f0e6d2',
                     },
                     fontFamily: {
                         serif: ['Cinzel', 'serif'],
@@ -48,24 +47,10 @@
             color: #e5e5e5;
         }
 
-        /* Theatrical Borders */
-        .stage-border {
-            border: 1px solid #bf9b30;
-            position: relative;
-            padding: 4px;
-        }
-        
-        .stage-border-inner {
-            border: 1px solid #bf9b30;
-            height: 100%;
-            width: 100%;
-        }
-
         .gold-glow {
-            text-shadow: 0 0 10px rgba(191, 155, 48, 0.4);
+            text-shadow: 0 0 15px rgba(191, 155, 48, 0.5);
         }
         
-        /* Vintage Cabaret Gradient */
         .cabaret-gradient {
             background: radial-gradient(circle at center, #1a0505 0%, #000000 100%);
         }
@@ -87,7 +72,6 @@
         .delay-200 { animation-delay: 0.2s; }
         .delay-300 { animation-delay: 0.3s; }
 
-        /* Custom selection color */
         ::selection {
             background: #660a0a;
             color: #fff;
@@ -102,18 +86,19 @@
             <div class="flex items-center justify-between h-24">
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center gap-3">
-                    <i data-lucide="ticket" class="w-8 h-8 text-hks-gold"></i>
+                    <i data-lucide="ticket" class="w-6 h-6 text-hks-gold"></i>
                     <div class="flex flex-col">
                         <span class="text-xl font-display text-white tracking-widest leading-none">HELLKITTY</span>
-                        <span class="text-xs font-serif text-hks-gold tracking-[0.3em] uppercase leading-none">Studio Events</span>
+                        <span class="text-[10px] font-serif text-hks-gold tracking-[0.3em] uppercase leading-none">Studio Events</span>
                     </div>
                 </div>
                 
                 <!-- Desktop Menu -->
                 <div class="hidden md:block">
                     <div class="flex items-center space-x-8">
-                        <a href="#production" class="text-xs font-bold uppercase tracking-widest hover:text-hks-gold transition-colors text-gray-300">About Us</a>
+                        <!-- REMOVED ABOUT US LINK -->
                         <a href="#events" class="text-xs font-bold uppercase tracking-widest text-hks-gold hover:text-white transition-colors border border-hks-gold/30 px-4 py-2 hover:bg-hks-gold/10">The Schedule</a>
+                        <a href="#gallery" class="text-xs font-bold uppercase tracking-widest hover:text-hks-gold transition-colors text-gray-300">Gallery</a>
                         <a href="#contact" class="text-xs font-bold uppercase tracking-widest hover:text-hks-gold transition-colors text-gray-300">Contact</a>
                     </div>
                 </div>
@@ -129,117 +114,71 @@
         <!-- Mobile Menu Dropdown -->
         <div id="mobile-menu" class="hidden md:hidden bg-black border-b border-hks-gold/20">
             <div class="px-4 py-4 space-y-4">
-                <a href="#production" class="block text-sm font-bold uppercase text-gray-300">About Us</a>
+                <!-- REMOVED ABOUT US LINK -->
                 <a href="#events" class="block text-sm font-bold uppercase text-hks-gold">The Schedule</a>
+                <a href="#gallery" class="block text-sm font-bold uppercase text-gray-300">Gallery</a>
                 <a href="#contact" class="block text-sm font-bold uppercase text-gray-300">Contact</a>
             </div>
         </div>
     </nav>
 
     <!-- Hero / Marquee Section -->
-    <header class="relative min-h-[90vh] flex items-center justify-center overflow-hidden cabaret-gradient">
+    <header class="relative min-h-[85vh] flex items-center justify-center overflow-hidden cabaret-gradient border-b border-hks-gold/20">
         <!-- Texture Overlay -->
         <div class="absolute inset-0 bg-noise pointer-events-none z-10"></div>
         
-        <!-- Decorative Background Elements -->
+        <!-- Background Elements -->
         <div class="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-black to-transparent z-0"></div>
-        <div class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-hks-black to-transparent z-0"></div>
 
         <div class="relative z-20 text-center px-4 max-w-4xl mx-auto">
             <div class="fade-in-up">
-                <span class="inline-block py-1 px-3 border border-hks-gold/50 text-hks-gold text-[10px] tracking-[0.4em] uppercase font-bold mb-6">Montreal • Est. 2015</span>
+                <span class="inline-block py-1 px-3 border border-hks-gold/50 text-hks-gold text-[10px] tracking-[0.4em] uppercase font-bold mb-6">Montreal Event Production</span>
             </div>
             
-            <h1 class="fade-in-up delay-100 text-6xl md:text-8xl lg:text-9xl font-display text-white mb-4 gold-glow relative inline-block">
-                SPECTACLE
-                <span class="absolute -top-6 -right-6 text-hks-red text-6xl transform rotate-12 opacity-80"><i data-lucide="star" class="fill-current"></i></span>
+            <h1 class="fade-in-up delay-100 text-6xl md:text-8xl lg:text-9xl font-display text-white mb-6 gold-glow relative inline-block">
+                IMMERSIVE
+            </h1>
+            <br/>
+            <h1 class="fade-in-up delay-200 text-5xl md:text-7xl lg:text-8xl font-serif text-hks-red mb-10 tracking-wider">
+                NIGHTLIFE
             </h1>
             
-            <div class="fade-in-up delay-200">
-                <h2 class="text-2xl md:text-3xl font-serif text-gray-300 tracking-widest font-light mb-8">
-                    BY HELLKITTY STUDIO EVENTS
-                </h2>
-                <div class="w-full h-px bg-gradient-to-r from-transparent via-hks-gold to-transparent opacity-50 mb-8"></div>
+            <div class="fade-in-up delay-300">
                 <p class="text-lg text-gray-400 font-elegant italic max-w-2xl mx-auto mb-10">
-                    "Purveyors of high-concept nightlife, theatrical productions, and immersive fantasy balls."
+                    Theatrical Productions • Masquerade Balls • Avant-Garde Performance
                 </p>
-            </div>
-
-            <div class="fade-in-up delay-300 flex flex-col sm:flex-row justify-center gap-6">
-                <a href="#events" class="px-8 py-4 bg-hks-red text-white font-serif font-bold tracking-widest uppercase hover:bg-red-900 transition-all border border-red-900 shadow-[0_0_20px_rgba(102,10,10,0.5)]">
-                    Upcoming Shows
-                </a>
-                <a href="#contact" class="px-8 py-4 bg-transparent border border-gray-600 text-gray-300 font-serif font-bold tracking-widest uppercase hover:border-white hover:text-white transition-all">
-                    Inquire
+                
+                <a href="#events" class="inline-block px-10 py-4 bg-hks-gold text-black font-serif font-bold tracking-widest uppercase hover:bg-white transition-all shadow-[0_0_20px_rgba(191,155,48,0.3)]">
+                    View 2026 Calendar
                 </a>
             </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <i data-lucide="chevron-down" class="w-6 h-6 text-hks-gold opacity-50"></i>
         </div>
     </header>
 
-    <!-- About The Production Company (Not the person) -->
-    <section id="production" class="py-24 bg-hks-black relative">
-        <div class="max-w-5xl mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-                <div class="order-2 md:order-1 relative">
-                    <!-- Image Placeholder Frame -->
-                    <div class="stage-border aspect-[4/5] transform -rotate-2 hover:rotate-0 transition-transform duration-500">
-                        <div class="stage-border-inner bg-[#151515] flex items-center justify-center overflow-hidden">
-                             <!-- Abstract geometric or curtain graphic representation -->
-                             <div class="text-center opacity-30">
-                                <i data-lucide="theater" class="w-24 h-24 text-hks-gold mx-auto mb-4"></i>
-                                <span class="font-display text-hks-gold text-xl">The Production</span>
-                             </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="order-1 md:order-2">
-                    <h3 class="text-hks-gold font-serif text-sm tracking-[0.3em] uppercase mb-2">Who We Are</h3>
-                    <h2 class="text-4xl md:text-5xl font-display text-white mb-8">Curating Fantasy</h2>
-                    <p class="text-gray-400 leading-relaxed mb-6 font-light text-lg">
-                        Hellkitty Studio Events is Montreal's premier independent production house dedicated to the avant-garde. We are not a venue; we are the architects of the evening. 
-                    </p>
-                    <p class="text-gray-400 leading-relaxed mb-8 font-light">
-                        We partner with historic theaters, hidden warehouses, and luxury spaces to create ephemeral worlds. From masquerade balls to neo-burlesque showcases, our events are designed for those who view nightlife as a participatory art form.
-                    </p>
-                    <div class="grid grid-cols-2 gap-8 border-t border-white/10 pt-8">
-                        <div>
-                            <span class="block text-3xl font-display text-white">10+</span>
-                            <span class="text-xs text-hks-gold uppercase tracking-widest">Years Producing</span>
-                        </div>
-                        <div>
-                            <span class="block text-3xl font-display text-white">50+</span>
-                            <span class="text-xs text-hks-gold uppercase tracking-widest">Unique Themes</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Events Section (The Core Product) -->
-    <section id="events" class="py-24 bg-[#0f0a0a] relative border-t border-hks-gold/10">
+    <!-- Events Section (IMMEDIATELY AFTER HERO - No "About" Section) -->
+    <section id="events" class="py-24 bg-[#0f0a0a] relative">
         <!-- Background Pattern -->
         <div class="absolute inset-0 opacity-5" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23bf9b30\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
 
         <div class="max-w-6xl mx-auto px-4 relative z-10">
             <div class="text-center mb-16">
                 <span class="text-hks-red font-bold uppercase tracking-widest text-xs">Official Box Office</span>
-                <h2 class="text-5xl font-display text-white mt-2 mb-6">Upcoming Productions</h2>
-                <div class="flex justify-center items-center gap-4 text-sm text-gray-500 font-serif">
-                    <span>Montreal</span>
-                    <span class="text-hks-gold">•</span>
-                    <span>2026 Season</span>
-                </div>
+                <h2 class="text-4xl md:text-5xl font-display text-white mt-2 mb-6">Upcoming Productions</h2>
+                <div class="w-24 h-1 bg-hks-gold mx-auto opacity-50"></div>
             </div>
 
-            <!-- Event List (Playbill Style) -->
+            <!-- Event List -->
             <div class="space-y-6">
                 
                 <!-- Event 1 -->
                 <div class="group bg-[#1a1515] hover:bg-[#221a1a] border border-white/5 hover:border-hks-gold/30 transition-all duration-300 p-6 md:p-8 flex flex-col md:flex-row items-center gap-8">
                     <!-- Date Badge -->
-                    <div class="flex-shrink-0 w-24 h-24 border-2 border-hks-gold flex flex-col items-center justify-center bg-black">
+                    <div class="flex-shrink-0 w-24 h-24 border-2 border-hks-gold flex flex-col items-center justify-center bg-black shadow-[0_0_15px_rgba(191,155,48,0.2)]">
                         <span class="text-hks-gold text-xs uppercase tracking-widest font-bold">OCT</span>
                         <span class="text-white text-3xl font-display">31</span>
                     </div>
@@ -265,7 +204,7 @@
                         <a href="https://ticketmaster.ca" target="_blank" class="block w-full md:w-auto px-8 py-3 bg-hks-gold text-black font-bold uppercase tracking-widest hover:bg-white transition-colors text-center text-xs">
                             Buy Tickets <i data-lucide="external-link" class="w-3 h-3 inline ml-1"></i>
                         </a>
-                        <p class="text-[10px] text-center mt-2 text-gray-500">Via External Vendor</p>
+                        <p class="text-[10px] text-center mt-2 text-gray-500">External Vendor</p>
                     </div>
                 </div>
 
@@ -298,7 +237,7 @@
                         <a href="https://eventbrite.ca" target="_blank" class="block w-full md:w-auto px-8 py-3 border border-white/20 text-white font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-colors text-center text-xs">
                             Reservations <i data-lucide="external-link" class="w-3 h-3 inline ml-1"></i>
                         </a>
-                         <p class="text-[10px] text-center mt-2 text-gray-500">Via External Vendor</p>
+                         <p class="text-[10px] text-center mt-2 text-gray-500">External Vendor</p>
                     </div>
                 </div>
 
@@ -338,40 +277,47 @@
         </div>
     </section>
 
-    <!-- Visuals / Atmosphere -->
-    <section class="py-20 bg-hks-black overflow-hidden border-t border-hks-gold/10">
+    <!-- Gallery / Atmosphere -->
+    <section id="gallery" class="py-20 bg-hks-black overflow-hidden border-t border-hks-gold/10">
         <div class="text-center mb-10">
             <h3 class="font-display text-2xl text-white">Visual Atmosphere</h3>
         </div>
         <!-- Simple Marquee effect -->
         <div class="relative w-full overflow-hidden">
             <div class="flex space-x-4 animate-none justify-center opacity-50">
-                <div class="w-48 h-64 border border-white/20 bg-gradient-to-b from-gray-900 to-black"></div>
-                <div class="w-48 h-64 border border-white/20 bg-gradient-to-b from-gray-900 to-black"></div>
-                <div class="w-48 h-64 border border-white/20 bg-gradient-to-b from-gray-900 to-black"></div>
-                <div class="w-48 h-64 border border-white/20 bg-gradient-to-b from-gray-900 to-black"></div>
+                <div class="w-48 h-64 border border-white/20 bg-gradient-to-b from-gray-900 to-black flex items-center justify-center">
+                    <i data-lucide="image" class="w-8 h-8 text-gray-700"></i>
+                </div>
+                <div class="w-48 h-64 border border-white/20 bg-gradient-to-b from-gray-900 to-black flex items-center justify-center">
+                    <i data-lucide="image" class="w-8 h-8 text-gray-700"></i>
+                </div>
+                <div class="w-48 h-64 border border-white/20 bg-gradient-to-b from-gray-900 to-black flex items-center justify-center">
+                    <i data-lucide="image" class="w-8 h-8 text-gray-700"></i>
+                </div>
+                <div class="w-48 h-64 border border-white/20 bg-gradient-to-b from-gray-900 to-black flex items-center justify-center">
+                    <i data-lucide="image" class="w-8 h-8 text-gray-700"></i>
+                </div>
             </div>
             <div class="absolute inset-0 flex items-center justify-center">
-                <p class="text-hks-gold font-serif text-sm bg-black px-4 py-2 border border-hks-gold">Full Gallery Coming Soon</p>
+                <p class="text-hks-gold font-serif text-sm bg-black/80 px-4 py-2 border border-hks-gold">Gallery Coming Soon</p>
             </div>
         </div>
     </section>
 
-    <!-- Contact Form (Producer context) -->
+    <!-- Contact Form (Strictly Business) -->
     <section id="contact" class="py-24 bg-gradient-to-br from-[#150505] to-black border-t border-hks-red/20">
         <div class="max-w-xl mx-auto px-4">
             <div class="text-center mb-10">
-                <i data-lucide="mail-open" class="w-10 h-10 text-hks-gold mx-auto mb-4"></i>
+                <i data-lucide="mail" class="w-10 h-10 text-hks-gold mx-auto mb-4"></i>
                 <h2 class="text-3xl font-display text-white mb-2">Production Inquiries</h2>
                 <p class="text-gray-500 text-sm">
-                    For booking, press accreditation, or ticket support. <br>
-                    <span class="italic text-gray-600">Please note we are an event production company, not a venue for hire.</span>
+                    For booking, press accreditation, or ticket support.
                 </p>
             </div>
 
             <form class="space-y-6" onsubmit="event.preventDefault(); alert('Inquiry Sent. We will respond shortly.');">
                 <div>
-                    <label class="block text-xs font-bold text-hks-gold uppercase tracking-widest mb-2">Organization / Name</label>
+                    <label class="block text-xs font-bold text-hks-gold uppercase tracking-widest mb-2">Name / Organization</label>
                     <input type="text" class="w-full bg-black border border-white/10 px-4 py-3 text-white focus:border-hks-gold focus:outline-none transition-colors">
                 </div>
                 <div>
@@ -384,7 +330,6 @@
                         <option>Ticket Support</option>
                         <option>Press Inquiry</option>
                         <option>Sponsorship</option>
-                        <option>Artist Submission</option>
                     </select>
                 </div>
                 <div>
@@ -401,7 +346,6 @@
     <!-- Footer -->
     <footer class="bg-black py-12 border-t border-white/5">
         <div class="max-w-7xl mx-auto px-4 text-center">
-            <i data-lucide="ticket" class="w-6 h-6 text-gray-600 mx-auto mb-4"></i>
             <p class="text-gray-500 text-xs uppercase tracking-widest mb-2">
                 &copy; 2026 Hellkitty Studio Events. Montreal, QC.
             </p>
