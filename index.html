@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/svg+xml" href="hellkitty-favicon.png">
-    <title>Hellkitty Studio | Immersive Nightlife & Events</title>
+    <title>Hellkitty Studio Events | Montreal Nightlife Production</title>
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -12,8 +12,8 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Added Playfair Display for that "Boudoir" editorial feel -->
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Rye for that "Circus/Western/Vintage" header feel often found in burlesque -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Rye&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -23,19 +23,19 @@
             theme: {
                 extend: {
                     colors: {
-                        'studio-black': '#050505',
-                        'studio-dark': '#0f0f0f',
-                        'studio-red': '#8a1c1c',
-                        'studio-red-bright': '#b91c1c',
-                        'studio-gold': '#c5a059',
+                        'hks-black': '#0a0505',
+                        'hks-red': '#660a0a',
+                        'hks-gold': '#bf9b30',
+                        'hks-paper': '#f0e6d2', /* Off-white for contrast elements */
                     },
                     fontFamily: {
                         serif: ['Cinzel', 'serif'],
-                        display: ['Playfair Display', 'serif'],
-                        sans: ['Montserrat', 'sans-serif'],
+                        display: ['Rye', 'serif'],
+                        body: ['Lato', 'sans-serif'],
+                        elegant: ['Playfair Display', 'serif'],
                     },
                     backgroundImage: {
-                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                        'noise': "url('data:image/svg+xml,%3Csvg viewBox=\"0 0 200 200\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cfilter id=\"noiseFilter\"%3E%3CfeTurbulence type=\"fractalNoise\" baseFrequency=\"0.65\" numOctaves=\"3\" stitchTiles=\"stitch\"/%3E%3C/filter%3E%3Crect width=\"100%25\" height=\"100%25\" filter=\"url(%23noiseFilter)\" opacity=\"0.05\"/%3E%3C/svg%3E')",
                     }
                 }
             }
@@ -44,223 +44,172 @@
 
     <style>
         body {
-            background-color: #050505;
+            background-color: #0a0505;
             color: #e5e5e5;
         }
 
-        /* Carnival/Circus vibe decorations */
-        .ornate-border {
-            border: 1px solid #c5a059;
+        /* Theatrical Borders */
+        .stage-border {
+            border: 1px solid #bf9b30;
             position: relative;
+            padding: 4px;
         }
         
-        .ornate-border::before, .ornate-border::after {
-            content: '';
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            border: 1px solid #c5a059;
-            transition: all 0.3s ease;
+        .stage-border-inner {
+            border: 1px solid #bf9b30;
+            height: 100%;
+            width: 100%;
         }
 
-        .ornate-border::before { top: -4px; left: -4px; border-right: none; border-bottom: none; }
-        .ornate-border::after { bottom: -4px; right: -4px; border-left: none; border-top: none; }
-
-        .text-glow-gold {
-            text-shadow: 0 0 15px rgba(197, 160, 89, 0.3);
+        .gold-glow {
+            text-shadow: 0 0 10px rgba(191, 155, 48, 0.4);
         }
         
-        .text-glow-red {
-            text-shadow: 0 0 20px rgba(138, 28, 28, 0.6);
+        /* Vintage Cabaret Gradient */
+        .cabaret-gradient {
+            background: radial-gradient(circle at center, #1a0505 0%, #000000 100%);
         }
 
-        .event-card {
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .event-card:hover {
-            transform: translateY(-5px) scale(1.01);
-            box-shadow: 0 20px 40px -10px rgba(138, 28, 28, 0.2);
-        }
-
-        .bg-pattern-damask {
-            background-image: radial-gradient(#1a1a1a 1px, transparent 1px), radial-gradient(#1a1a1a 1px, transparent 1px);
-            background-size: 20px 20px;
-            background-position: 0 0, 10px 10px;
-        }
-
-        .fade-in-section {
+        .fade-in-up {
+            animation: fadeInUp 1s ease-out forwards;
             opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 1s ease, transform 1s ease;
+            transform: translateY(20px);
         }
-        
-        .fade-in-section.is-visible {
-            opacity: 1;
-            transform: none;
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-        
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #050505; 
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #333; 
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #8a1c1c; 
+
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+
+        /* Custom selection color */
+        ::selection {
+            background: #660a0a;
+            color: #fff;
         }
     </style>
 </head>
-<body class="antialiased bg-studio-black overflow-x-hidden">
+<body class="antialiased bg-hks-black overflow-x-hidden font-body">
 
-    <!-- Navigation -->
-    <nav class="fixed w-full z-50 bg-studio-black/95 backdrop-blur-sm border-b border-white/5 transition-all duration-300" id="navbar">
+    <!-- Sticky Navigation -->
+    <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-md border-b border-[#bf9b30]/30 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-24">
-                <div class="flex-shrink-0 flex items-center gap-2">
-                    <div class="w-8 h-8 bg-studio-red rotate-45 flex items-center justify-center border border-studio-gold">
-                        <div class="w-4 h-4 bg-black -rotate-45"></div>
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center gap-3">
+                    <i data-lucide="ticket" class="w-8 h-8 text-hks-gold"></i>
+                    <div class="flex flex-col">
+                        <span class="text-xl font-display text-white tracking-widest leading-none">HELLKITTY</span>
+                        <span class="text-xs font-serif text-hks-gold tracking-[0.3em] uppercase leading-none">Studio Events</span>
                     </div>
-                    <a href="#" class="text-2xl font-serif font-bold text-white tracking-[0.2em] hover:text-studio-gold transition-colors">
-                        HELLKITTY <span class="text-studio-red">STUDIO</span>
-                    </a>
                 </div>
                 
                 <!-- Desktop Menu -->
                 <div class="hidden md:block">
-                    <div class="ml-10 flex items-center space-x-12">
-                        <a href="#studio" class="text-xs font-sans font-bold uppercase tracking-widest hover:text-studio-red transition-colors duration-300">The Studio</a>
-                        <a href="#events" class="text-xs font-sans font-bold uppercase tracking-widest hover:text-studio-red transition-colors duration-300 text-studio-gold">Upcoming Events</a>
-                        <a href="#gallery" class="text-xs font-sans font-bold uppercase tracking-widest hover:text-studio-red transition-colors duration-300">Gallery</a>
-                        <a href="#contact" class="px-8 py-3 bg-studio-red/10 border border-studio-red text-studio-red hover:bg-studio-red hover:text-white transition-all duration-300 font-sans text-xs font-bold tracking-widest uppercase">
-                            Contact
-                        </a>
+                    <div class="flex items-center space-x-8">
+                        <a href="#production" class="text-xs font-bold uppercase tracking-widest hover:text-hks-gold transition-colors text-gray-300">About Us</a>
+                        <a href="#events" class="text-xs font-bold uppercase tracking-widest text-hks-gold hover:text-white transition-colors border border-hks-gold/30 px-4 py-2 hover:bg-hks-gold/10">The Schedule</a>
+                        <a href="#contact" class="text-xs font-bold uppercase tracking-widest hover:text-hks-gold transition-colors text-gray-300">Contact</a>
                     </div>
                 </div>
 
                 <!-- Mobile menu button -->
-                <div class="-mr-2 flex md:hidden">
-                    <button type="button" onclick="toggleMobileMenu()" class="text-gray-400 hover:text-white focus:outline-none">
+                <div class="md:hidden">
+                    <button onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" class="text-hks-gold">
                         <i data-lucide="menu" class="h-8 w-8"></i>
                     </button>
                 </div>
             </div>
         </div>
-
-        <!-- Mobile Menu -->
-        <div class="md:hidden hidden bg-studio-black border-b border-studio-red/20 absolute w-full" id="mobile-menu">
-            <div class="px-4 pt-4 pb-6 space-y-2 text-center">
-                <a href="#studio" class="block px-3 py-3 text-sm font-sans uppercase tracking-widest text-gray-300 hover:text-white hover:bg-white/5">The Studio</a>
-                <a href="#events" class="block px-3 py-3 text-sm font-sans uppercase tracking-widest text-studio-gold hover:text-white hover:bg-white/5">Events</a>
-                <a href="#gallery" class="block px-3 py-3 text-sm font-sans uppercase tracking-widest text-gray-300 hover:text-white hover:bg-white/5">Gallery</a>
-                <a href="#contact" class="block px-3 py-3 text-sm font-sans uppercase tracking-widest text-studio-red font-bold">Contact Us</a>
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-black border-b border-hks-gold/20">
+            <div class="px-4 py-4 space-y-4">
+                <a href="#production" class="block text-sm font-bold uppercase text-gray-300">About Us</a>
+                <a href="#events" class="block text-sm font-bold uppercase text-hks-gold">The Schedule</a>
+                <a href="#contact" class="block text-sm font-bold uppercase text-gray-300">Contact</a>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <header class="relative min-h-screen flex items-center justify-center overflow-hidden">
-        <!-- Dynamic Background -->
-        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-studio-red/20 via-studio-black to-studio-black z-10"></div>
+    <!-- Hero / Marquee Section -->
+    <header class="relative min-h-[90vh] flex items-center justify-center overflow-hidden cabaret-gradient">
+        <!-- Texture Overlay -->
+        <div class="absolute inset-0 bg-noise pointer-events-none z-10"></div>
         
-        <!-- Decorative Elements -->
-        <div class="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/black-linen.png')] opacity-50 z-10 mix-blend-overlay"></div>
-        
-        <div class="relative z-20 text-center px-4 max-w-5xl mx-auto fade-in-section mt-10">
-            <div class="mb-6 flex justify-center">
-                <i data-lucide="crown" class="w-12 h-12 text-studio-gold opacity-80"></i>
+        <!-- Decorative Background Elements -->
+        <div class="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-black to-transparent z-0"></div>
+        <div class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-hks-black to-transparent z-0"></div>
+
+        <div class="relative z-20 text-center px-4 max-w-4xl mx-auto">
+            <div class="fade-in-up">
+                <span class="inline-block py-1 px-3 border border-hks-gold/50 text-hks-gold text-[10px] tracking-[0.4em] uppercase font-bold mb-6">Montreal • Est. 2015</span>
             </div>
             
-            <h2 class="text-studio-gold font-sans tracking-[0.5em] uppercase text-xs md:text-sm mb-6">Curators of the Night</h2>
-            
-            <h1 class="text-6xl md:text-8xl lg:text-9xl font-display italic text-white mb-2 text-glow-red leading-none">
-                Hellkitty
-            </h1>
-            <h1 class="text-5xl md:text-7xl lg:text-8xl font-serif font-black text-white mb-10 text-glow-red tracking-wider">
-                STUDIO
+            <h1 class="fade-in-up delay-100 text-6xl md:text-8xl lg:text-9xl font-display text-white mb-4 gold-glow relative inline-block">
+                SPECTACLE
+                <span class="absolute -top-6 -right-6 text-hks-red text-6xl transform rotate-12 opacity-80"><i data-lucide="star" class="fill-current"></i></span>
             </h1>
             
-            <div class="w-24 h-1 bg-gradient-to-r from-transparent via-studio-red to-transparent mx-auto mb-10"></div>
+            <div class="fade-in-up delay-200">
+                <h2 class="text-2xl md:text-3xl font-serif text-gray-300 tracking-widest font-light mb-8">
+                    BY HELLKITTY STUDIO EVENTS
+                </h2>
+                <div class="w-full h-px bg-gradient-to-r from-transparent via-hks-gold to-transparent opacity-50 mb-8"></div>
+                <p class="text-lg text-gray-400 font-elegant italic max-w-2xl mx-auto mb-10">
+                    "Purveyors of high-concept nightlife, theatrical productions, and immersive fantasy balls."
+                </p>
+            </div>
 
-            <p class="text-gray-300 font-display italic text-xl md:text-2xl max-w-2xl mx-auto mb-12 font-light leading-relaxed">
-                "Where opulence meets the underground." <br>
-                <span class="text-sm font-sans not-italic text-gray-500 mt-2 block tracking-widest uppercase">Montreal, Quebec</span>
-            </p>
-            
-            <div class="flex flex-col md:flex-row gap-6 justify-center items-center">
-                <a href="#events" class="group relative px-10 py-4 bg-transparent border border-studio-gold/50 overflow-hidden">
-                    <div class="absolute inset-0 w-0 bg-studio-gold transition-all duration-[250ms] ease-out group-hover:w-full opacity-10"></div>
-                    <span class="relative text-studio-gold font-sans tracking-[0.2em] text-sm uppercase font-bold group-hover:text-white transition-colors">View Calendar</span>
+            <div class="fade-in-up delay-300 flex flex-col sm:flex-row justify-center gap-6">
+                <a href="#events" class="px-8 py-4 bg-hks-red text-white font-serif font-bold tracking-widest uppercase hover:bg-red-900 transition-all border border-red-900 shadow-[0_0_20px_rgba(102,10,10,0.5)]">
+                    Upcoming Shows
+                </a>
+                <a href="#contact" class="px-8 py-4 bg-transparent border border-gray-600 text-gray-300 font-serif font-bold tracking-widest uppercase hover:border-white hover:text-white transition-all">
+                    Inquire
                 </a>
             </div>
         </div>
-        
-        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-20 animate-pulse text-studio-red/50">
-            <i data-lucide="chevrons-down" class="w-6 h-6"></i>
-        </div>
     </header>
 
-    <!-- The Studio Experience (Replaces Mistress Bio) -->
-    <section id="studio" class="py-32 bg-studio-dark relative border-y border-white/5">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+    <!-- About The Production Company (Not the person) -->
+    <section id="production" class="py-24 bg-hks-black relative">
+        <div class="max-w-5xl mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                <div class="order-2 md:order-1 relative">
+                    <!-- Image Placeholder Frame -->
+                    <div class="stage-border aspect-[4/5] transform -rotate-2 hover:rotate-0 transition-transform duration-500">
+                        <div class="stage-border-inner bg-[#151515] flex items-center justify-center overflow-hidden">
+                             <!-- Abstract geometric or curtain graphic representation -->
+                             <div class="text-center opacity-30">
+                                <i data-lucide="theater" class="w-24 h-24 text-hks-gold mx-auto mb-4"></i>
+                                <span class="font-display text-hks-gold text-xl">The Production</span>
+                             </div>
+                        </div>
+                    </div>
+                </div>
                 
-                <!-- Text Content -->
-                <div class="lg:col-span-5 fade-in-section lg:pr-12">
-                    <h2 class="text-4xl font-display italic text-white mb-2">The Immersive</h2>
-                    <h3 class="text-5xl font-serif font-bold text-studio-red mb-8">EXPERIENCE</h3>
-                    
-                    <p class="text-gray-400 font-sans leading-loose mb-6 text-sm text-justify">
-                        Hellkitty Studio is not merely a venue; it is a traveling theater of the senses. We specialize in producing high-concept nightlife events that blur the line between performer and patron. Drawing inspiration from the grand guignol, the cabaret of the 1920s, and modern avant-garde aesthetics.
+                <div class="order-1 md:order-2">
+                    <h3 class="text-hks-gold font-serif text-sm tracking-[0.3em] uppercase mb-2">Who We Are</h3>
+                    <h2 class="text-4xl md:text-5xl font-display text-white mb-8">Curating Fantasy</h2>
+                    <p class="text-gray-400 leading-relaxed mb-6 font-light text-lg">
+                        Hellkitty Studio Events is Montreal's premier independent production house dedicated to the avant-garde. We are not a venue; we are the architects of the evening. 
                     </p>
-                    <p class="text-gray-400 font-sans leading-loose mb-8 text-sm text-justify">
-                        Our events are strictly curated sanctuaries of intensity and art. We enforce dress codes not to exclude, but to ensure that every guest contributes to the living art of the evening. Step inside, leave the mundane world behind, and become part of the spectacle.
+                    <p class="text-gray-400 leading-relaxed mb-8 font-light">
+                        We partner with historic theaters, hidden warehouses, and luxury spaces to create ephemeral worlds. From masquerade balls to neo-burlesque showcases, our events are designed for those who view nightlife as a participatory art form.
                     </p>
-                    
-                    <ul class="space-y-4 font-sans text-xs tracking-widest text-studio-gold uppercase">
-                        <li class="flex items-center gap-3">
-                            <i data-lucide="star" class="w-4 h-4 text-studio-red"></i> Strict Privacy Protocols
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <i data-lucide="star" class="w-4 h-4 text-studio-red"></i> Thematic Dress Codes
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <i data-lucide="star" class="w-4 h-4 text-studio-red"></i> Curated Atmosphere
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Visual Collage -->
-                <div class="lg:col-span-7 relative fade-in-section mt-12 lg:mt-0">
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="space-y-4 transform translate-y-8">
-                            <div class="aspect-[3/4] bg-neutral-900 border border-white/10 relative overflow-hidden group">
-                                <div class="absolute inset-0 bg-studio-red/10 group-hover:bg-transparent transition-colors duration-500"></div>
-                                <!-- Decorative placeholder for image -->
-                                <div class="w-full h-full bg-[radial-gradient(circle_at_center,_#333_0%,_#000_100%)] flex items-center justify-center">
-                                    <i data-lucide="mask" class="w-16 h-16 text-white/20"></i>
-                                </div>
-                            </div>
+                    <div class="grid grid-cols-2 gap-8 border-t border-white/10 pt-8">
+                        <div>
+                            <span class="block text-3xl font-display text-white">10+</span>
+                            <span class="text-xs text-hks-gold uppercase tracking-widest">Years Producing</span>
                         </div>
-                        <div class="space-y-4">
-                            <div class="aspect-[3/4] bg-neutral-900 border border-white/10 relative overflow-hidden group">
-                                <div class="absolute inset-0 bg-studio-gold/5 group-hover:bg-transparent transition-colors duration-500"></div>
-                                <!-- Decorative placeholder for image -->
-                                <div class="w-full h-full bg-[radial-gradient(circle_at_center,_#333_0%,_#000_100%)] flex items-center justify-center">
-                                    <i data-lucide="glass-water" class="w-16 h-16 text-white/20"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Central decoration -->
-                    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 border-2 border-studio-gold rotate-45 flex items-center justify-center bg-studio-black z-10 shadow-2xl shadow-black">
-                        <div class="w-28 h-28 border border-white/20 flex items-center justify-center">
-                            <span class="font-serif text-3xl font-bold text-studio-red">HKS</span>
+                        <div>
+                            <span class="block text-3xl font-display text-white">50+</span>
+                            <span class="text-xs text-hks-gold uppercase tracking-widest">Unique Themes</span>
                         </div>
                     </div>
                 </div>
@@ -268,283 +217,204 @@
         </div>
     </section>
 
-    <!-- Events Section (The Core) -->
-    <section id="events" class="py-32 bg-studio-black relative bg-pattern-damask">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-24 fade-in-section">
-                <i data-lucide="calendar-days" class="w-8 h-8 text-studio-red mx-auto mb-4"></i>
-                <h2 class="text-5xl md:text-6xl font-serif text-white mb-4">The Season</h2>
-                <div class="h-px w-40 bg-studio-gold mx-auto mb-6"></div>
-                <p class="text-gray-500 font-sans uppercase tracking-widest text-xs">Secure your entry. Dress to kill. (Montreal Exclusive)</p>
+    <!-- Events Section (The Core Product) -->
+    <section id="events" class="py-24 bg-[#0f0a0a] relative border-t border-hks-gold/10">
+        <!-- Background Pattern -->
+        <div class="absolute inset-0 opacity-5" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23bf9b30\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+
+        <div class="max-w-6xl mx-auto px-4 relative z-10">
+            <div class="text-center mb-16">
+                <span class="text-hks-red font-bold uppercase tracking-widest text-xs">Official Box Office</span>
+                <h2 class="text-5xl font-display text-white mt-2 mb-6">Upcoming Productions</h2>
+                <div class="flex justify-center items-center gap-4 text-sm text-gray-500 font-serif">
+                    <span>Montreal</span>
+                    <span class="text-hks-gold">•</span>
+                    <span>2026 Season</span>
+                </div>
             </div>
 
-            <!-- Events List Layout -->
-            <div class="space-y-12">
+            <!-- Event List (Playbill Style) -->
+            <div class="space-y-6">
                 
-                <!-- Event 1: The Gala -->
-                <div class="group event-card relative grid grid-cols-1 lg:grid-cols-12 border border-white/10 bg-studio-dark fade-in-section overflow-hidden">
-                    <div class="lg:col-span-4 relative h-64 lg:h-auto overflow-hidden">
-                        <div class="absolute inset-0 bg-studio-red/20 group-hover:bg-transparent transition-all duration-500 z-10"></div>
-                        <!-- Placeholder Art -->
-                        <div class="w-full h-full bg-gradient-to-br from-gray-900 to-black flex items-center justify-center">
-                             <i data-lucide="gem" class="w-24 h-24 text-white/10 group-hover:text-white/30 transition-all duration-500 scale-125"></i>
+                <!-- Event 1 -->
+                <div class="group bg-[#1a1515] hover:bg-[#221a1a] border border-white/5 hover:border-hks-gold/30 transition-all duration-300 p-6 md:p-8 flex flex-col md:flex-row items-center gap-8">
+                    <!-- Date Badge -->
+                    <div class="flex-shrink-0 w-24 h-24 border-2 border-hks-gold flex flex-col items-center justify-center bg-black">
+                        <span class="text-hks-gold text-xs uppercase tracking-widest font-bold">OCT</span>
+                        <span class="text-white text-3xl font-display">31</span>
+                    </div>
+                    
+                    <!-- Details -->
+                    <div class="flex-grow text-center md:text-left">
+                        <div class="flex flex-col md:flex-row md:items-center gap-2 mb-2">
+                            <h3 class="text-3xl font-elegant italic text-white group-hover:text-hks-gold transition-colors">The Obsidian Ball</h3>
+                            <span class="hidden md:inline text-gray-600">|</span>
+                            <span class="text-hks-red text-xs font-bold uppercase tracking-widest">Signature Gala</span>
                         </div>
-                        <div class="absolute bottom-0 left-0 bg-studio-red text-white font-bold font-sans text-xs px-4 py-2 uppercase tracking-widest z-20">
-                            Signature Event
+                        <p class="text-gray-400 text-sm mb-4 max-w-2xl">
+                            Our annual Halloween spectacular. Featuring three floors of immersive installation, live orchestral accompaniment, and avant-garde performance art.
+                        </p>
+                        <div class="flex flex-wrap justify-center md:justify-start gap-4 text-xs text-gray-500 uppercase tracking-wider">
+                            <span class="flex items-center gap-1"><i data-lucide="map-pin" class="w-3 h-3"></i> Old Port, Montreal</span>
+                            <span class="flex items-center gap-1"><i data-lucide="clock" class="w-3 h-3"></i> 9:00 PM - 3:00 AM</span>
                         </div>
                     </div>
                     
-                    <div class="lg:col-span-5 p-8 lg:p-12 flex flex-col justify-center border-r border-white/5">
-                        <div class="text-studio-gold font-sans text-xs tracking-[0.2em] uppercase mb-2">October 31st • Old Port, Montreal</div>
-                        <h3 class="text-4xl font-display italic text-white mb-1">The Obsidian</h3>
-                        <h3 class="text-4xl font-serif font-black text-white mb-6 uppercase">Ball</h3>
-                        <p class="text-gray-400 font-sans text-sm leading-relaxed mb-6 line-clamp-3">
-                            Our annual Halloween formal. A night of unparalleled decadence, live performance art, and auditory immersion. The Obsidian Ball is the crown jewel of the Hellkitty season. 
-                        </p>
-                        <div class="flex items-center gap-4 text-xs font-bold uppercase text-gray-500">
-                            <span class="flex items-center gap-1"><i data-lucide="music" class="w-3 h-3"></i> Dark Wave</span>
-                            <span class="flex items-center gap-1"><i data-lucide="shirt" class="w-3 h-3"></i> Formal Fetish</span>
-                        </div>
-                    </div>
-
-                    <div class="lg:col-span-3 p-8 bg-black/50 flex flex-col justify-center items-center text-center gap-4">
-                        <div>
-                            <span class="block text-gray-500 text-xs uppercase tracking-widest mb-1">Entry From</span>
-                            <span class="block text-3xl font-serif text-white">$75</span>
-                        </div>
-                        <a href="https://eventbrite.com" target="_blank" class="w-full py-3 border border-studio-gold text-studio-gold font-bold font-sans uppercase tracking-widest text-xs hover:bg-studio-gold hover:text-black transition-all duration-300">
-                            Get Tickets <i data-lucide="external-link" class="w-3 h-3 inline ml-1"></i>
+                    <!-- Action -->
+                    <div class="flex-shrink-0 w-full md:w-auto">
+                        <a href="https://ticketmaster.ca" target="_blank" class="block w-full md:w-auto px-8 py-3 bg-hks-gold text-black font-bold uppercase tracking-widest hover:bg-white transition-colors text-center text-xs">
+                            Buy Tickets <i data-lucide="external-link" class="w-3 h-3 inline ml-1"></i>
                         </a>
-                        <span class="text-[10px] text-red-500 uppercase tracking-widest font-bold">Low Availability</span>
+                        <p class="text-[10px] text-center mt-2 text-gray-500">Via External Vendor</p>
                     </div>
                 </div>
 
-                <!-- Event 2: Club Night -->
-                <div class="group event-card relative grid grid-cols-1 lg:grid-cols-12 border border-white/10 bg-studio-dark fade-in-section overflow-hidden">
-                    <div class="lg:col-span-4 relative h-64 lg:h-auto overflow-hidden order-last lg:order-first">
-                        <div class="absolute inset-0 bg-purple-900/20 group-hover:bg-transparent transition-all duration-500 z-10"></div>
-                        <!-- Placeholder Art -->
-                        <div class="w-full h-full bg-gradient-to-br from-gray-900 to-black flex items-center justify-center">
-                             <i data-lucide="zap" class="w-24 h-24 text-white/10 group-hover:text-white/30 transition-all duration-500 scale-125"></i>
+                <!-- Event 2 -->
+                <div class="group bg-[#1a1515] hover:bg-[#221a1a] border border-white/5 hover:border-hks-gold/30 transition-all duration-300 p-6 md:p-8 flex flex-col md:flex-row items-center gap-8">
+                    <!-- Date Badge -->
+                    <div class="flex-shrink-0 w-24 h-24 border-2 border-gray-700 flex flex-col items-center justify-center bg-black">
+                        <span class="text-gray-500 text-xs uppercase tracking-widest font-bold">DEC</span>
+                        <span class="text-white text-3xl font-display">12</span>
+                    </div>
+                    
+                    <!-- Details -->
+                    <div class="flex-grow text-center md:text-left">
+                        <div class="flex flex-col md:flex-row md:items-center gap-2 mb-2">
+                            <h3 class="text-3xl font-elegant italic text-white group-hover:text-hks-gold transition-colors">Carnivale Noir</h3>
+                            <span class="hidden md:inline text-gray-600">|</span>
+                            <span class="text-gray-400 text-xs font-bold uppercase tracking-widest">Cabaret & Circus</span>
                         </div>
-                        <div class="absolute bottom-0 left-0 bg-white text-black font-bold font-sans text-xs px-4 py-2 uppercase tracking-widest z-20">
-                            Club Night
+                        <p class="text-gray-400 text-sm mb-4 max-w-2xl">
+                            A seated theatrical experience blending dark circus, sideshow, and burlesque. Table service available. Black tie or vintage evening wear required.
+                        </p>
+                        <div class="flex flex-wrap justify-center md:justify-start gap-4 text-xs text-gray-500 uppercase tracking-wider">
+                            <span class="flex items-center gap-1"><i data-lucide="map-pin" class="w-3 h-3"></i> Saint-Henri Theatre</span>
+                            <span class="flex items-center gap-1"><i data-lucide="clock" class="w-3 h-3"></i> Doors 7:00 PM</span>
                         </div>
                     </div>
                     
-                    <div class="lg:col-span-5 p-8 lg:p-12 flex flex-col justify-center border-r border-white/5">
-                        <div class="text-studio-gold font-sans text-xs tracking-[0.2em] uppercase mb-2">November 15th • The Underground, Montreal</div>
-                        <h3 class="text-4xl font-display italic text-white mb-1">Neon</h3>
-                        <h3 class="text-4xl font-serif font-black text-white mb-6 uppercase">Dungeon</h3>
-                        <p class="text-gray-400 font-sans text-sm leading-relaxed mb-6 line-clamp-3">
-                            An industrial dance night featuring resident DJs from the underground circuit. Cyber-goth, latex, and neon aesthetics reign supreme in this high-energy environment.
-                        </p>
-                        <div class="flex items-center gap-4 text-xs font-bold uppercase text-gray-500">
-                            <span class="flex items-center gap-1"><i data-lucide="music" class="w-3 h-3"></i> EBM / Industrial</span>
-                            <span class="flex items-center gap-1"><i data-lucide="shirt" class="w-3 h-3"></i> Cyber / PVC</span>
-                        </div>
-                    </div>
-
-                    <div class="lg:col-span-3 p-8 bg-black/50 flex flex-col justify-center items-center text-center gap-4">
-                        <div>
-                            <span class="block text-gray-500 text-xs uppercase tracking-widest mb-1">Entry From</span>
-                            <span class="block text-3xl font-serif text-white">$40</span>
-                        </div>
-                        <a href="https://eventbrite.com" target="_blank" class="w-full py-3 border border-white/30 text-white font-bold font-sans uppercase tracking-widest text-xs hover:bg-white hover:text-black transition-all duration-300">
-                            Get Tickets <i data-lucide="external-link" class="w-3 h-3 inline ml-1"></i>
+                    <!-- Action -->
+                    <div class="flex-shrink-0 w-full md:w-auto">
+                        <a href="https://eventbrite.ca" target="_blank" class="block w-full md:w-auto px-8 py-3 border border-white/20 text-white font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-colors text-center text-xs">
+                            Reservations <i data-lucide="external-link" class="w-3 h-3 inline ml-1"></i>
                         </a>
+                         <p class="text-[10px] text-center mt-2 text-gray-500">Via External Vendor</p>
                     </div>
                 </div>
 
-                <!-- Event 3: Themed Event -->
-                <div class="group event-card relative grid grid-cols-1 lg:grid-cols-12 border border-white/10 bg-studio-dark fade-in-section overflow-hidden">
-                    <div class="lg:col-span-4 relative h-64 lg:h-auto overflow-hidden order-last lg:order-first">
-                        <div class="absolute inset-0 bg-studio-gold/10 group-hover:bg-transparent transition-all duration-500 z-10"></div>
-                        <!-- Placeholder Art -->
-                        <div class="w-full h-full bg-gradient-to-br from-gray-900 to-black flex items-center justify-center">
-                             <i data-lucide="feather" class="w-24 h-24 text-white/10 group-hover:text-white/30 transition-all duration-500 scale-125"></i>
+                <!-- Event 3 -->
+                <div class="group bg-[#1a1515] hover:bg-[#221a1a] border border-white/5 hover:border-hks-gold/30 transition-all duration-300 p-6 md:p-8 flex flex-col md:flex-row items-center gap-8">
+                    <!-- Date Badge -->
+                    <div class="flex-shrink-0 w-24 h-24 border-2 border-gray-700 flex flex-col items-center justify-center bg-black">
+                        <span class="text-gray-500 text-xs uppercase tracking-widest font-bold">FEB</span>
+                        <span class="text-white text-3xl font-display">14</span>
+                    </div>
+                    
+                    <!-- Details -->
+                    <div class="flex-grow text-center md:text-left">
+                        <div class="flex flex-col md:flex-row md:items-center gap-2 mb-2">
+                            <h3 class="text-3xl font-elegant italic text-white group-hover:text-hks-gold transition-colors">The Red Rite</h3>
+                            <span class="hidden md:inline text-gray-600">|</span>
+                            <span class="text-hks-red text-xs font-bold uppercase tracking-widest">Valentines Special</span>
                         </div>
-                        <div class="absolute bottom-0 left-0 bg-studio-gold text-black font-bold font-sans text-xs px-4 py-2 uppercase tracking-widest z-20">
-                            Cabaret
+                        <p class="text-gray-400 text-sm mb-4 max-w-2xl">
+                            An immersive dance event focusing on passion, rhythm, and color. Dress code strictly enforced: All Red everything.
+                        </p>
+                        <div class="flex flex-wrap justify-center md:justify-start gap-4 text-xs text-gray-500 uppercase tracking-wider">
+                            <span class="flex items-center gap-1"><i data-lucide="map-pin" class="w-3 h-3"></i> Secret Location</span>
+                            <span class="flex items-center gap-1"><i data-lucide="clock" class="w-3 h-3"></i> 10:00 PM - Late</span>
                         </div>
                     </div>
                     
-                    <div class="lg:col-span-5 p-8 lg:p-12 flex flex-col justify-center border-r border-white/5">
-                        <div class="text-studio-gold font-sans text-xs tracking-[0.2em] uppercase mb-2">December 12th • Saint-Henri, Montreal</div>
-                        <h3 class="text-4xl font-display italic text-white mb-1">Carnivale</h3>
-                        <h3 class="text-4xl font-serif font-black text-white mb-6 uppercase">Noir</h3>
-                        <p class="text-gray-400 font-sans text-sm leading-relaxed mb-6 line-clamp-3">
-                            A seated cabaret experience featuring circus acts, burlesque, and sideshow performances. Table service is available. A night of mystery and old-world charm.
-                        </p>
-                        <div class="flex items-center gap-4 text-xs font-bold uppercase text-gray-500">
-                            <span class="flex items-center gap-1"><i data-lucide="music" class="w-3 h-3"></i> Jazz / Cabaret</span>
-                            <span class="flex items-center gap-1"><i data-lucide="shirt" class="w-3 h-3"></i> Vintage / Evening</span>
-                        </div>
-                    </div>
-
-                    <div class="lg:col-span-3 p-8 bg-black/50 flex flex-col justify-center items-center text-center gap-4">
-                        <div>
-                            <span class="block text-gray-500 text-xs uppercase tracking-widest mb-1">Tables From</span>
-                            <span class="block text-3xl font-serif text-white">$200</span>
-                        </div>
-                        <a href="https://opentable.com" target="_blank" class="w-full py-3 border border-white/30 text-white font-bold font-sans uppercase tracking-widest text-xs hover:bg-white hover:text-black transition-all duration-300">
-                            Book Table <i data-lucide="external-link" class="w-3 h-3 inline ml-1"></i>
-                        </a>
+                    <!-- Action -->
+                    <div class="flex-shrink-0 w-full md:w-auto">
+                        <button disabled class="block w-full md:w-auto px-8 py-3 border border-white/10 text-gray-500 font-bold uppercase tracking-widest cursor-not-allowed text-center text-xs">
+                            Coming Soon
+                        </button>
                     </div>
                 </div>
 
-            </div>
-            
-            <div class="mt-20 text-center">
-                 <a href="#" class="inline-block border-b border-studio-red text-studio-red uppercase tracking-widest text-xs font-bold pb-1 hover:text-white hover:border-white transition-colors">View Past Events Archive</a>
             </div>
         </div>
     </section>
 
-    <!-- Gallery / Aesthetic Preview (Visual Placeholder) -->
-    <section id="gallery" class="py-24 bg-studio-dark border-t border-white/5 overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 text-center mb-12">
-            <h2 class="text-3xl font-display italic text-white">Visuals</h2>
+    <!-- Visuals / Atmosphere -->
+    <section class="py-20 bg-hks-black overflow-hidden border-t border-hks-gold/10">
+        <div class="text-center mb-10">
+            <h3 class="font-display text-2xl text-white">Visual Atmosphere</h3>
         </div>
-        <div class="flex gap-4 overflow-x-auto pb-8 px-4 no-scrollbar fade-in-section">
-            <!-- Simulated Gallery Strip -->
-            <div class="flex-shrink-0 w-64 h-80 bg-black border border-white/10 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-500">
-                <span class="text-white/20 font-serif">Atmosphere I</span>
+        <!-- Simple Marquee effect -->
+        <div class="relative w-full overflow-hidden">
+            <div class="flex space-x-4 animate-none justify-center opacity-50">
+                <div class="w-48 h-64 border border-white/20 bg-gradient-to-b from-gray-900 to-black"></div>
+                <div class="w-48 h-64 border border-white/20 bg-gradient-to-b from-gray-900 to-black"></div>
+                <div class="w-48 h-64 border border-white/20 bg-gradient-to-b from-gray-900 to-black"></div>
+                <div class="w-48 h-64 border border-white/20 bg-gradient-to-b from-gray-900 to-black"></div>
             </div>
-            <div class="flex-shrink-0 w-64 h-80 bg-black border border-white/10 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-500">
-                <span class="text-white/20 font-serif">Atmosphere II</span>
-            </div>
-            <div class="flex-shrink-0 w-64 h-80 bg-black border border-white/10 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-500">
-                <span class="text-white/20 font-serif">Atmosphere III</span>
-            </div>
-            <div class="flex-shrink-0 w-64 h-80 bg-black border border-white/10 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-500">
-                <span class="text-white/20 font-serif">Atmosphere IV</span>
-            </div>
-             <div class="flex-shrink-0 w-64 h-80 bg-black border border-white/10 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-500">
-                <span class="text-white/20 font-serif">Atmosphere V</span>
+            <div class="absolute inset-0 flex items-center justify-center">
+                <p class="text-hks-gold font-serif text-sm bg-black px-4 py-2 border border-hks-gold">Full Gallery Coming Soon</p>
             </div>
         </div>
     </section>
 
-    <!-- Contact / Inquiries -->
-    <section id="contact" class="py-24 bg-studio-red-bright relative overflow-hidden">
-        <!-- Overlay -->
-        <div class="absolute inset-0 bg-studio-black/90"></div>
-        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
-        
-        <div class="relative z-10 max-w-2xl mx-auto px-4 fade-in-section">
-            <div class="mb-10 text-center">
-                <h2 class="text-4xl font-serif text-white mb-4">Inquiries & Reservations</h2>
-                <p class="text-gray-400 font-light text-sm leading-relaxed">
-                    Please use this form for general questions, booking requests, or press accreditations.<br/>
-                    <span class="text-studio-red font-bold">Responses typically provided within 72 hours.</span>
+    <!-- Contact Form (Producer context) -->
+    <section id="contact" class="py-24 bg-gradient-to-br from-[#150505] to-black border-t border-hks-red/20">
+        <div class="max-w-xl mx-auto px-4">
+            <div class="text-center mb-10">
+                <i data-lucide="mail-open" class="w-10 h-10 text-hks-gold mx-auto mb-4"></i>
+                <h2 class="text-3xl font-display text-white mb-2">Production Inquiries</h2>
+                <p class="text-gray-500 text-sm">
+                    For booking, press accreditation, or ticket support. <br>
+                    <span class="italic text-gray-600">Please note we are an event production company, not a venue for hire.</span>
                 </p>
             </div>
-            
-            <form class="space-y-6" onsubmit="event.preventDefault(); alert('Your message has been sent. We will contact you shortly.');">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <!-- Name -->
-                    <div class="space-y-1">
-                        <label class="text-xs font-bold uppercase text-studio-gold tracking-widest">Name / Handle</label>
-                        <input type="text" class="w-full bg-studio-black/50 border border-white/10 p-4 text-white placeholder-gray-600 focus:outline-none focus:border-studio-gold transition-colors" required>
-                    </div>
-                    <!-- Email -->
-                    <div class="space-y-1">
-                        <label class="text-xs font-bold uppercase text-studio-gold tracking-widest">Email Address</label>
-                        <input type="email" class="w-full bg-studio-black/50 border border-white/10 p-4 text-white placeholder-gray-600 focus:outline-none focus:border-studio-gold transition-colors" required>
-                    </div>
-                </div>
 
-                <!-- Subject -->
-                <div class="space-y-1">
-                    <label class="text-xs font-bold uppercase text-studio-gold tracking-widest">Subject</label>
-                    <select class="w-full bg-studio-black/50 border border-white/10 p-4 text-white focus:outline-none focus:border-studio-gold transition-colors appearance-none cursor-pointer">
-                        <option>General Inquiry</option>
-                        <option>Event Booking / Private Table</option>
-                        <option>Press / Media</option>
-                        <option>Lost & Found</option>
+            <form class="space-y-6" onsubmit="event.preventDefault(); alert('Inquiry Sent. We will respond shortly.');">
+                <div>
+                    <label class="block text-xs font-bold text-hks-gold uppercase tracking-widest mb-2">Organization / Name</label>
+                    <input type="text" class="w-full bg-black border border-white/10 px-4 py-3 text-white focus:border-hks-gold focus:outline-none transition-colors">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-hks-gold uppercase tracking-widest mb-2">Email</label>
+                    <input type="email" class="w-full bg-black border border-white/10 px-4 py-3 text-white focus:border-hks-gold focus:outline-none transition-colors">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-hks-gold uppercase tracking-widest mb-2">Topic</label>
+                    <select class="w-full bg-black border border-white/10 px-4 py-3 text-white focus:border-hks-gold focus:outline-none transition-colors">
+                        <option>Ticket Support</option>
+                        <option>Press Inquiry</option>
+                        <option>Sponsorship</option>
+                        <option>Artist Submission</option>
                     </select>
                 </div>
-
-                <!-- Message -->
-                <div class="space-y-1">
-                    <label class="text-xs font-bold uppercase text-studio-gold tracking-widest">Message</label>
-                    <textarea rows="4" class="w-full bg-studio-black/50 border border-white/10 p-4 text-white placeholder-gray-600 focus:outline-none focus:border-studio-gold transition-colors resize-none"></textarea>
+                <div>
+                    <label class="block text-xs font-bold text-hks-gold uppercase tracking-widest mb-2">Message</label>
+                    <textarea rows="4" class="w-full bg-black border border-white/10 px-4 py-3 text-white focus:border-hks-gold focus:outline-none transition-colors"></textarea>
                 </div>
-
-                <div class="pt-4 text-center">
-                    <button type="submit" class="group relative px-12 py-4 bg-white text-black font-bold uppercase tracking-widest text-xs overflow-hidden inline-block">
-                        <span class="relative z-10 group-hover:text-white transition-colors">Send Inquiry</span>
-                        <div class="absolute inset-0 bg-studio-red transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></div>
-                    </button>
-                </div>
+                <button type="submit" class="w-full py-4 bg-hks-gold/10 border border-hks-gold text-hks-gold font-bold uppercase tracking-widest hover:bg-hks-gold hover:text-black transition-all">
+                    Send Inquiry
+                </button>
             </form>
-            
-            <div class="mt-16 pt-8 border-t border-white/10 flex justify-center gap-8">
-                <a href="#" class="text-gray-500 hover:text-white transition-colors"><i data-lucide="instagram" class="w-5 h-5"></i></a>
-                <a href="#" class="text-gray-500 hover:text-white transition-colors"><i data-lucide="facebook" class="w-5 h-5"></i></a>
-                <a href="#" class="text-gray-500 hover:text-white transition-colors"><i data-lucide="mail" class="w-5 h-5"></i></a>
-            </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="bg-black py-12 border-t border-white/5">
-        <div class="max-w-7xl mx-auto px-4 flex flex-col items-center justify-center">
-            <div class="w-8 h-8 bg-studio-red rotate-45 flex items-center justify-center border border-studio-gold mb-6">
-                 <div class="w-4 h-4 bg-black -rotate-45"></div>
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <i data-lucide="ticket" class="w-6 h-6 text-gray-600 mx-auto mb-4"></i>
+            <p class="text-gray-500 text-xs uppercase tracking-widest mb-2">
+                &copy; 2026 Hellkitty Studio Events. Montreal, QC.
+            </p>
+            <div class="flex justify-center gap-6 mt-6">
+                <a href="#" class="text-gray-600 hover:text-white"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+                <a href="#" class="text-gray-600 hover:text-white"><i data-lucide="facebook" class="w-5 h-5"></i></a>
+                <a href="#" class="text-gray-600 hover:text-white"><i data-lucide="twitter" class="w-5 h-5"></i></a>
             </div>
-            <p class="text-gray-600 text-[10px] font-sans uppercase tracking-[0.2em] mb-2">
-                &copy; 2026 Hellkitty Studio.
-            </p>
-            <p class="text-gray-700 text-[10px] font-sans max-w-lg text-center leading-relaxed">
-                Hellkitty Studio produces theatrical nightlife events. All attendees must be 21+. We operate a strict consent policy. 
-                <br>This is a safe space for creative expression.
-            </p>
         </div>
     </footer>
 
     <script>
-        // Initialize Lucide Icons
         lucide.createIcons();
-
-        // Mobile Menu Toggle
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
-        }
-
-        // Intersection Observer for Fade-in Animation
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.1
-        };
-
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                    observer.unobserve(entry.target); 
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.fade-in-section').forEach(section => {
-            observer.observe(section);
-        });
-
-        // Navbar background
-        window.addEventListener('scroll', () => {
-            const nav = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                nav.classList.add('shadow-2xl');
-                nav.classList.add('bg-black');
-            } else {
-                nav.classList.remove('shadow-2xl');
-                nav.classList.remove('bg-black');
-            }
-        });
     </script>
 </body>
 </html>
